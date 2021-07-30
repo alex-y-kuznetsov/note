@@ -1,5 +1,9 @@
 <template>
-  <div class="controls">Controls</div>
+  <div class="controls">
+    <button class="btn">Add a Note</button>
+    <button class="btn">Clear All</button>
+    <button class="btn">Mark as Old</button>
+  </div>
 </template>
 
 <script>
