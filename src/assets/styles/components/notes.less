@@ -2,22 +2,53 @@
   flex: 1 1 0;
 }
 
+.notes_title {
+  font-size: 18px;
+  margin: 0;
+}
+
 .notes_inner {
   display: flex;
+  flex-wrap: wrap;
 }
 
 .note {
   padding: 10px;
   border: 1px solid @main_color;
   width: 24%;
+  height: fit-content;
   margin: 1% 1% 0 0;
   box-sizing: border-box;
+  box-shadow: 6px -6px 0 0 @shadow_color;
+  user-select: none;
+}
+
+.note_header {
+  display: flex;
+  justify-content: space-between;
 }
 
 .note_title {
-  font-size: 18px;
-  line-height: 20px;
+  font-size: 16px;
+  line-height: 18px;
   margin: 0 0 10px 0;
+}
+
+.note_icon {
+  width: 20px;
+  height: 20px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  display: inline-block;
+
+  &.note_fav {
+    background-image: url('/note-build/images/icons/fav.svg');
+  }
+
+  &.note_new {
+    background-image: url('/note-build/images/icons/new.svg');
+  }
 }
 
 .note_text {
