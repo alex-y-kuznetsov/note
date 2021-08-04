@@ -1,5 +1,6 @@
 <template>
-  <div class="notes">
+  <div class="notes"
+       v-bind:class="{ 'notes_list': isListView }">
     <h1 class="notes_title">Notes</h1>
     <div class="notes_inner">
       <NewNoteItem v-if="isAddNoteShown" />
@@ -17,7 +18,8 @@ export default {
   components: { NewNoteItem, NoteItem },
   computed: {
     ...mapState([
-      'isAddNoteShown'
+      'isAddNoteShown',
+      'isListView'
     ])
   }
 }

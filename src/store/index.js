@@ -5,11 +5,15 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    isAddNoteShown: false
+    isAddNoteShown: false,
+    isListView: false
   },
   mutations: {
     toggleNewNote (state) {
       state.isAddNoteShown = !state.isAddNoteShown;
+    },
+    toggleListView (state) {
+      state.isListView = !state.isListView;
     }
   },
   actions: {
