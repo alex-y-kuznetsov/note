@@ -6,16 +6,18 @@
       <NewNoteItem v-if="isAddNoteShown" />
       <NoteItem />
     </div>
+    <Stats />
   </div>
 </template>
 
 <script>
 import NewNoteItem from '@/components/NewNoteItem.vue';
 import NoteItem from '@/components/NoteItem.vue';
+import Stats from '@/components/Stats.vue';
 import { mapState } from 'vuex';
 
 export default {
-  components: { NewNoteItem, NoteItem },
+  components: { NewNoteItem, NoteItem, Stats },
   computed: {
     ...mapState([
       'isAddNoteShown',
