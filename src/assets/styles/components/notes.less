@@ -4,13 +4,30 @@
 
 .notes_inner {
   display: flex;
-  margin-top: 20px;
 }
 
 .note {
   padding: 10px;
   border: 1px solid @main_color;
   width: 24%;
-  margin: 0 1% 1% 0;
+  margin: 1% 1% 0 0;
   box-sizing: border-box;
+}
+
+.note_title {
+  font-size: 18px;
+  line-height: 20px;
+  margin: 0 0 10px 0;
+}
+
+.note_text {
+  font-size: 14px;
+  line-height: 16px;
+}
+
+.note_date {
+  font-size: 12px;
+  line-height: 14px;
+  color: @secondary_color;
+  font-style: italic;
 }
