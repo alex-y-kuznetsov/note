@@ -12,9 +12,15 @@ body {
   cursor: pointer;
   transition: all 0.2s;
 
-  &:hover {
+  &:hover,
+  &.btn_active {
     background-color: @main_color;
     color: #ffffff;
     transition: all 0.2s;
+  }
+
+  &.btn_active {
+    color: @active_color;
+    border-color: @active_color;
   }
 }

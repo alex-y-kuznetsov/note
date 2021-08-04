@@ -5,8 +5,12 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    isAddNoteShown: false
   },
   mutations: {
+    toggleNewNote (state) {
+      state.isAddNoteShown = !state.isAddNoteShown;
+    }
   },
   actions: {
   },
