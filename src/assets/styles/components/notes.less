@@ -26,6 +26,7 @@
 .note_header {
   display: flex;
   justify-content: space-between;
+  width: 100%;
 }
 
 .note_title {
@@ -54,6 +55,7 @@
 .note_text {
   font-size: 14px;
   line-height: 16px;
+  margin-bottom: 6px;
 }
 
 .note_date {
@@ -61,4 +63,40 @@
   line-height: 14px;
   color: @secondary_color;
   font-style: italic;
+}
+
+.new_note {
+  .btn {
+    &:not(:last-of-type) {
+      margin-right: 6px;
+    }
+  }
+}
+
+.new_note_title,
+.new_note_text {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  width: 100%;
+  background-color: transparent;
+  box-shadow: none;
+  outline: none;
+  border: 1px solid @main_color;
+  box-sizing: border-box;
+  padding: 4px 6px;
+}
+
+.new_note_title {
+  &::placeholder {
+    font-size: 16px;
+    line-height: 18px;
+  }
+}
+
+.new_note_text {
+  resize: none;
+
+  &::placeholder {
+    font-size: 14px;
+    line-height: 16px;
+  }
 }

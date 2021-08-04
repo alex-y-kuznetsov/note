@@ -3,8 +3,8 @@
     <div class="note_header">
       <h1 class="note_title">Note Item</h1>
       <div class="note_status">
-        <span class="note_icon note_fav" title="Favorite"></span>
         <span class="note_icon note_new" title="New"></span>
+        <span class="note_icon note_fav" title="Favorite"></span>
       </div>
     </div>
     <div class="note_text">Note text is placed here</div>
