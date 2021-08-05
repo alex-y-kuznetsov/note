@@ -7,6 +7,7 @@ export default new Vuex.Store({
   state: {
     isAddNoteShown: false,
     isListView: false,
+    isAllNotesMarked: false,
     notes: []
   },
   mutations: {
@@ -15,6 +16,19 @@ export default new Vuex.Store({
     },
     toggleListView (state) {
       state.isListView = !state.isListView;
+    },
+    toggleMarkAllNotes (state) {
+      if (state.notes.some(item => item.marked === false)) {
+        state.notes.forEach(item => {
+          item.marked = true;
+        });
+        state.isAllNotesMarked = true;
+      } else {
+        state.notes.forEach(item => {
+          item.marked = false;
+        });
+        state.isAllNotesMarked = false;
+      }
     },
     createNewNote (state, newNote) {
       state.notes.unshift(newNote);
@@ -28,6 +42,7 @@ export default new Vuex.Store({
     },
     updateNotes (state) {
       localStorage.notes ? state.notes = JSON.parse(localStorage.notes) : state.notes = [];
+      state.notes.some(item => item.marked === false) ? state.isAllNotesMarked = false : state.isAllNotesMarked = true;
     },
     clearNotes (state) {
       state.notes = []

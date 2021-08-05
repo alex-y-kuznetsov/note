@@ -9,7 +9,10 @@
             v-on:click.stop="clearNotesInStorage">
       Clear
     </button>
-    <button class="btn">Mark</button>
+    <button class="btn"
+            v-on:click.stop="toggleMarkAllNotes">
+      {{ isAllNotesMarked ? 'Unmark' : 'Mark' }}
+    </button>
     <button class="btn"
             v-on:click.stop="toggleView">
       {{ isListView ? 'Tiles' : 'List' }}
@@ -25,7 +28,8 @@ export default {
   computed: {
     ...mapState([
       'isAddNoteShown',
-      'isListView'
+      'isListView',
+      'isAllNotesMarked'
     ])
   },
   methods: {
@@ -38,6 +42,10 @@ export default {
     clearNotesInStorage () {
       this.$store.commit('clearNotes');
       localStorage.removeItem('notes');
+    },
+    toggleMarkAllNotes () {
+      this.$store.commit('toggleMarkAllNotes');
+      this.$store.commit('saveNotesInStorage');
     }
   }
 }

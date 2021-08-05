@@ -52,6 +52,7 @@ export default {
   methods: {
     saveNotesInStorage () {
       this.$store.commit('saveNotesInStorage');
+      this.$store.commit('updateNotes');
     },
     deleteNote (id) {
       this.$store.commit('deleteNote', id);
