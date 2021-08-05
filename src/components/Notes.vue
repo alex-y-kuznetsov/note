@@ -10,6 +10,10 @@
                 v-bind:title="note.title"
                 v-bind:text="note.text"
                 v-bind:date="note.date" />
+    <div class="notes_empty"
+         v-if="!notes.length && !isAddNoteShown">
+      No notes here. Try adding one.
+    </div>
     </div>
     <Stats />
   </div>

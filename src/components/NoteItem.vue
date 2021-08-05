@@ -1,7 +1,7 @@
 <template>
   <article class="note">
     <div class="note_header">
-      <h1 class="note_title">{{ title }}</h1>
+      <h1 class="note_title" v-bind:title="title">{{ title }}</h1>
       <div class="note_status">
         <span class="note_icon note_new" title="New"></span>
         <span class="note_icon note_fav" title="Favorite"></span>
