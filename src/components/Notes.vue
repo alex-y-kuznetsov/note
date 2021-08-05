@@ -8,7 +8,8 @@
       <NoteItem v-for="(note, index) in notes"
                 v-bind:key="index"
                 v-bind:title="note.title"
-                v-bind:text="note.text" />
+                v-bind:text="note.text"
+                v-bind:date="note.date" />
     </div>
     <Stats />
   </div>

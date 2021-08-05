@@ -8,7 +8,7 @@
       </div>
     </div>
     <div class="note_text">{{ text }}</div>
-    <span class="note_date">12.12.2021</span>
+    <span class="note_date">{{ date }}</span>
   </article>
 </template>
 
@@ -16,7 +16,8 @@
 export default {
   props: {
     title: String,
-    text: String
+    text: String,
+    date: String
   }
 }
 </script>

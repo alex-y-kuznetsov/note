@@ -27,12 +27,15 @@ export default {
     return {
       newNote: {
         title: '',
-        text: ''
+        text: '',
+        date: ''
       }
     }
   },
   methods: {
     createNote () {
+      const now = Date.now()
+      this.newNote.date = new Date(now).toLocaleString();
       if (!localStorage.notes) {
         const notesForStorage = []
         notesForStorage.push(this.newNote)
