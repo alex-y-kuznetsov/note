@@ -43,16 +43,8 @@ export default {
       this.newNote.date = new Date(now).toLocaleString();
 
       if (this.newNote.title && this.newNote.text) {
-        if (!localStorage.notes) {
-          const notesForStorage = []
-          notesForStorage.push(this.newNote)
-          localStorage.setItem('notes', JSON.stringify(notesForStorage))
-        } else {
-          const notesFromStorage = JSON.parse(localStorage.notes);
-          notesFromStorage.unshift(this.newNote);
-          localStorage.notes = JSON.stringify(notesFromStorage);
-        }
-        this.$emit('note-created');
+        this.$store.commit('createNewNote', this.newNote);
+        this.$store.commit('toggleNewNote');
         this.validation = true;
       } else {
         this.validation = false;

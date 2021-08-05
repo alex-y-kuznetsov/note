@@ -6,9 +6,13 @@
       Add
     </button>
     <button class="btn"
+            v-on:click.stop="saveNotesInStorage">
+      Save
+    </button>
+    <button class="btn"
             v-on:click.stop="clearNotesInStorage">
       Clear
-      </button>
+    </button>
     <button class="btn">Mark</button>
     <button class="btn"
             v-on:click.stop="toggleView">
@@ -36,8 +40,11 @@ export default {
       this.$store.commit('toggleListView');
     },
     clearNotesInStorage () {
+      this.$store.commit('clearNotes');
       localStorage.removeItem('notes');
-      this.$store.commit('updateNotes');
+    },
+    saveNotesInStorage () {
+      this.$store.commit('saveNotesInStorage');
     }
   }
 

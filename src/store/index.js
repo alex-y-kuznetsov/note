@@ -16,8 +16,21 @@ export default new Vuex.Store({
     toggleListView (state) {
       state.isListView = !state.isListView;
     },
-    updateNotes (store) {
-      localStorage.notes ? store.notes = JSON.parse(localStorage.notes) : store.notes = []
+    createNewNote (state, newNote) {
+      state.notes.unshift(newNote);
+    },
+    updateNotes (state) {
+      localStorage.notes ? state.notes = JSON.parse(localStorage.notes) : state.notes = []
+    },
+    clearNotes (state) {
+      state.notes = []
+    },
+    saveNotesInStorage (state) {
+      if (!localStorage.notes) {
+        localStorage.setItem('notes', JSON.stringify(state.notes))
+      } else {
+        localStorage.notes = JSON.stringify(state.notes);
+      }
     }
   },
   actions: {
