@@ -4,11 +4,14 @@
     <h1 class="notes_title">Notes</h1>
     <div class="notes_inner">
       <NewNoteItem v-if="isAddNoteShown"/>
-      <NoteItem v-for="(note, index) in notes"
-                v-bind:key="index"
+      <NoteItem v-for="note in notes"
+                v-bind:id="note.id"
+                v-bind:key="note.id"
                 v-bind:title="note.title"
                 v-bind:text="note.text"
-                v-bind:date="note.date" />
+                v-bind:date="note.date"
+                v-bind:marked="note.marked"
+                v-bind:favorite="note.favorite" />
     <div class="notes_empty"
          v-if="!notes.length && !isAddNoteShown">
       No notes here. Try adding one.

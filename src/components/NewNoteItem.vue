@@ -30,9 +30,12 @@ export default {
   data () {
     return {
       newNote: {
+        id: null,
         title: '',
         text: '',
-        date: ''
+        date: '',
+        marked: false,
+        favorite: false
       },
       validation: true
     }
