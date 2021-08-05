@@ -45,20 +45,47 @@
   text-overflow: ellipsis;
 }
 
+.note_status {
+  display: flex;
+}
+
+.note_input {
+  display: none;
+
+  &:checked {
+    & + .note_icon {
+      background-color: @active_color;
+      border-color: @main_color;
+    }
+  }
+}
+
 .note_icon {
-  width: 20px;
-  height: 20px;
+  width: 22px;
+  height: 22px;
+  box-sizing: border-box;
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: 90%;
   background-position: center;
   display: inline-block;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  margin: 0 2px;
+  cursor: pointer;
+
+  &.note_mark {
+    background-image: url('/note-build/images/icons/mark.svg');
+  }
 
   &.note_fav {
     background-image: url('/note-build/images/icons/fav.svg');
   }
 
-  &.note_new {
-    background-image: url('/note-build/images/icons/new.svg');
+  &.note_delete {
+    background-image: url('/note-build/images/icons/delete.svg');
+    background-color: transparent;
+    background-size: contain;
+    padding: 0;
   }
 }
 
