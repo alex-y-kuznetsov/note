@@ -3,8 +3,12 @@
        v-bind:class="{ 'notes_list': isListView }">
     <h1 class="notes_title">Notes</h1>
     <div class="notes_inner">
-      <NewNoteItem v-if="isAddNoteShown" />
-      <NoteItem />
+      <NewNoteItem v-if="isAddNoteShown"
+                   v-on:note-created="onNoteCreated" />
+      <NoteItem v-for="(note, index) in notes"
+                v-bind:key="index"
+                v-bind:title="note.title"
+                v-bind:text="note.text" />
     </div>
     <Stats />
   </div>
@@ -21,8 +25,15 @@ export default {
   computed: {
     ...mapState([
       'isAddNoteShown',
-      'isListView'
+      'isListView',
+      'notes'
     ])
+  },
+  methods: {
+    onNoteCreated () {
+      this.$store.commit('toggleNewNote');
+      this.$store.commit('updateNotes')
+    }
   }
 }
 </script>

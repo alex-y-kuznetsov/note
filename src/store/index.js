@@ -6,7 +6,8 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     isAddNoteShown: false,
-    isListView: false
+    isListView: false,
+    notes: localStorage.notes ? JSON.parse(localStorage.notes) : []
   },
   mutations: {
     toggleNewNote (state) {
@@ -14,6 +15,9 @@ export default new Vuex.Store({
     },
     toggleListView (state) {
       state.isListView = !state.isListView;
+    },
+    updateNotes (store) {
+      localStorage.notes ? store.notes = JSON.parse(localStorage.notes) : store.notes = []
     }
   },
   actions: {

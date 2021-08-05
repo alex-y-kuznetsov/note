@@ -2,13 +2,16 @@
   <div class="controls">
     <button class="btn"
             v-bind:class="{ 'btn_active': isAddNoteShown }"
-            v-on:click="toggleAddNote">
+            v-on:click.stop="toggleAddNote">
       Add
     </button>
-    <button class="btn">Clear</button>
+    <button class="btn"
+            v-on:click.stop="clearNotesInStorage">
+      Clear
+      </button>
     <button class="btn">Mark</button>
     <button class="btn"
-            v-on:click="toggleView">
+            v-on:click.stop="toggleView">
       {{ isListView ? 'Tiles' : 'List' }}
     </button>
     <button class="btn">Filter</button>
@@ -31,6 +34,10 @@ export default {
     },
     toggleView () {
       this.$store.commit('toggleListView');
+    },
+    clearNotesInStorage () {
+      localStorage.removeItem('notes');
+      this.$store.commit('updateNotes');
     }
   }
 
