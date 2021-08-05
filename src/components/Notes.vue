@@ -32,8 +32,11 @@ export default {
   methods: {
     onNoteCreated () {
       this.$store.commit('toggleNewNote');
-      this.$store.commit('updateNotes')
+      this.$store.commit('updateNotes');
     }
+  },
+  created () {
+    this.$store.commit('updateNotes');
   }
 }
 </script>

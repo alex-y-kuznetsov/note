@@ -7,7 +7,7 @@ export default new Vuex.Store({
   state: {
     isAddNoteShown: false,
     isListView: false,
-    notes: localStorage.notes ? JSON.parse(localStorage.notes) : []
+    notes: []
   },
   mutations: {
     toggleNewNote (state) {
