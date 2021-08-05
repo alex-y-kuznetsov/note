@@ -19,11 +19,15 @@ export default new Vuex.Store({
     createNewNote (state, newNote) {
       state.notes.unshift(newNote);
     },
+    deleteNote (state, id) {
+      state.notes.forEach((item, index) => {
+        if (item.id === id) {
+          state.notes.splice(index, 1);
+        }
+      })
+    },
     updateNotes (state) {
       localStorage.notes ? state.notes = JSON.parse(localStorage.notes) : state.notes = [];
-      for (let i = 0; i < state.notes.length; i++) {
-        state.notes[i].id = i;
-      }
     },
     clearNotes (state) {
       state.notes = []

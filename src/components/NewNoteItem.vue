@@ -44,6 +44,7 @@ export default {
     createNote () {
       const now = Date.now()
       this.newNote.date = new Date(now).toLocaleString();
+      this.newNote.id = new Date().getTime();
 
       if (this.newNote.title && this.newNote.text) {
         this.$store.commit('createNewNote', this.newNote);

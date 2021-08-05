@@ -20,7 +20,8 @@
                v-bind:for="'noteFav_' + id"
                title="Favorite"></label>
         <button class="note_icon note_delete"
-                title="Delete"></button>
+                title="Delete"
+                v-on:click.stop="deleteNote(id)"></button>
       </div>
     </div>
     <div class="note_text">{{ text }}</div>
@@ -50,6 +51,10 @@ export default {
   },
   methods: {
     saveNotesInStorage () {
+      this.$store.commit('saveNotesInStorage');
+    },
+    deleteNote (id) {
+      this.$store.commit('deleteNote', id);
       this.$store.commit('saveNotesInStorage');
     }
   }
