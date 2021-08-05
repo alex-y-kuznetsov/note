@@ -47,6 +47,7 @@ export default {
 
       if (this.newNote.title && this.newNote.text) {
         this.$store.commit('createNewNote', this.newNote);
+        this.$store.commit('saveNotesInStorage');
         this.$store.commit('toggleNewNote');
         this.validation = true;
       } else {

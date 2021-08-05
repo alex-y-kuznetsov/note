@@ -6,10 +6,6 @@
       Add
     </button>
     <button class="btn"
-            v-on:click.stop="saveNotesInStorage">
-      Save
-    </button>
-    <button class="btn"
             v-on:click.stop="clearNotesInStorage">
       Clear
     </button>
@@ -42,11 +38,7 @@ export default {
     clearNotesInStorage () {
       this.$store.commit('clearNotes');
       localStorage.removeItem('notes');
-    },
-    saveNotesInStorage () {
-      this.$store.commit('saveNotesInStorage');
     }
   }
-
 }
 </script>

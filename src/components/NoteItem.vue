@@ -6,14 +6,16 @@
         <input type="checkbox"
                class="note_input"
                v-bind:id="'noteMark_' + id"
-               v-model="currentNote.marked" />
+               v-model="currentNote.marked"
+               v-on:change="saveNotesInStorage" />
         <label class="note_icon note_mark"
                v-bind:for="'noteMark_' + id"
                title="Mark"></label>
         <input type="checkbox"
                class="note_input"
                v-bind:id="'noteFav_' + id"
-               v-model="currentNote.favorite" />
+               v-model="currentNote.favorite"
+               v-on:change="saveNotesInStorage" />
         <label class="note_icon note_fav"
                v-bind:for="'noteFav_' + id"
                title="Favorite"></label>
@@ -44,6 +46,11 @@ export default {
     ]),
     currentNote () {
       return this.notes.find(note => note.id === this.id)
+    }
+  },
+  methods: {
+    saveNotesInStorage () {
+      this.$store.commit('saveNotesInStorage');
     }
   }
 }
