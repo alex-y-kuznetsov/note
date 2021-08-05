@@ -10,6 +10,10 @@
               rows="4"
               v-model="newNote.text">
     </textarea>
+    <div class="validation_message"
+         v-if="!validation">
+      Please fill all fields
+    </div>
     <button class="btn"
             v-on:click.stop="eraseNote">
       Erase
@@ -29,23 +33,30 @@ export default {
         title: '',
         text: '',
         date: ''
-      }
+      },
+      validation: true
     }
   },
   methods: {
     createNote () {
       const now = Date.now()
       this.newNote.date = new Date(now).toLocaleString();
-      if (!localStorage.notes) {
-        const notesForStorage = []
-        notesForStorage.push(this.newNote)
-        localStorage.setItem('notes', JSON.stringify(notesForStorage))
+
+      if (this.newNote.title && this.newNote.text) {
+        if (!localStorage.notes) {
+          const notesForStorage = []
+          notesForStorage.push(this.newNote)
+          localStorage.setItem('notes', JSON.stringify(notesForStorage))
+        } else {
+          const notesFromStorage = JSON.parse(localStorage.notes);
+          notesFromStorage.unshift(this.newNote);
+          localStorage.notes = JSON.stringify(notesFromStorage);
+        }
+        this.$emit('note-created');
+        this.validation = true;
       } else {
-        const notesFromStorage = JSON.parse(localStorage.notes);
-        notesFromStorage.unshift(this.newNote);
-        localStorage.notes = JSON.stringify(notesFromStorage);
+        this.validation = false;
       }
-      this.$emit('note-created');
     },
     eraseNote () {
       this.newNote.title = '';
