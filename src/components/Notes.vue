@@ -5,7 +5,7 @@
       <span>Notes</span>
       <span class="notes_filtered"
             v-if="isFiltered">
-            <span>Showing: </span>
+            <span>Applied filters: </span>
             <span class="notes_filter"
                   v-for="(appliedFilter, index) in appliedFilterTypes"
                   v-bind:key="index">{{ appliedFilter }}</span>
@@ -22,8 +22,8 @@
                 v-bind:marked="note.marked"
                 v-bind:favorite="note.favorite" />
     <div class="notes_empty"
-         v-if="!notes.length && !isAddNoteShown">
-      No notes here. Try adding one.
+         v-if="!notesArray.length && !isAddNoteShown">
+      {{ emptyNotesMessage }}
     </div>
     </div>
     <Stats />
@@ -46,6 +46,12 @@ export default {
       'notes',
       'filteredNotes'
     ]),
+    emptyNotesMessage () {
+      if (!this.isFiltered && !this.notesArray.length && !this.isAddNoteShown) {
+        return 'No notes here. Try adding one.'
+      }
+      return 'Nothing found'
+    },
     isFiltered () {
       return this.appliedFilters.marked || this.appliedFilters.favorite;
     },

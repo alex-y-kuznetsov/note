@@ -3,24 +3,24 @@
     <button class="btn"
             v-bind:class="{ 'btn_active': isAddNoteShown }"
             v-on:click.stop="toggleAddNote">
-      Add
+      Add Note
     </button>
     <button class="btn"
             v-on:click.stop="clearNotesInStorage">
-      Clear
+      Clear All
     </button>
     <button class="btn"
             v-on:click.stop="toggleMarkAllNotes">
-      {{ isAllNotesMarked ? 'Unmark' : 'Mark' }}
+      {{ isAllNotesMarked ? 'Unmark All' : 'Mark All' }}
     </button>
     <button class="btn"
             v-on:click.stop="toggleView">
-      {{ isListView ? 'Tiles' : 'List' }}
+      {{ isListView ? 'Tiles View' : 'List View' }}
     </button>
     <button class="btn"
             v-bind:class="{ 'btn_active': isFilterShown}"
             v-on:click.stop="toggleFilter">
-      Show
+      Show Filters
     </button>
     <transition name="slide-fade">
       <div class="controls_filter"
