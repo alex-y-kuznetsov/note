@@ -20,7 +20,7 @@
     <button class="btn"
             v-bind:class="{ 'btn_active': isFilterShown}"
             v-on:click.stop="toggleFilter">
-      Filter
+      Show
     </button>
     <transition name="slide-fade">
       <div class="controls_filter"

@@ -5,7 +5,7 @@
       <span>Notes</span>
       <span class="notes_filtered"
             v-if="isFiltered">
-            <span>Applied filters: </span>
+            <span>Showing: </span>
             <span class="notes_filter"
                   v-for="(appliedFilter, index) in appliedFilterTypes"
                   v-bind:key="index">{{ appliedFilter }}</span>
