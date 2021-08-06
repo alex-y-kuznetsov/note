@@ -1,7 +1,8 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
+import Vue from 'vue';
+import Vuex from 'vuex';
+import uniqueArray from '@/helpers/uniqueArray.js';
 
-Vue.use(Vuex)
+Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
@@ -31,7 +32,7 @@ export default new Vuex.Store({
       for (const field in state.appliedFilters) {
         if (state.appliedFilters[field] === true) {
           const arrToConcat = state.notes.filter(item => item[field] === true);
-          state.filteredNotes = state.filteredNotes.concat(arrToConcat);
+          state.filteredNotes = uniqueArray(state.filteredNotes.concat(arrToConcat));
         }
       }
     },
