@@ -17,7 +17,24 @@
             v-on:click.stop="toggleView">
       {{ isListView ? 'Tiles' : 'List' }}
     </button>
-    <button class="btn">Filter</button>
+    <button class="btn"
+            v-bind:class="{ 'btn_active': isFilterShown}"
+            v-on:click.stop="toggleFilter">
+      Filter
+    </button>
+    <transition name="slide-fade">
+      <div class="controls_filter"
+          v-if="isFilterShown">
+        <input type="checkbox" id="controlsFilterMarked" class="controls_input"
+               v-model="appliedFilters.marked"
+               v-on:change="applyCurrentFilter" />
+        <label for="controlsFilterMarked" class="controls_label">Marked</label>
+        <input type="checkbox" id="controlsFilterFavorite" class="controls_input"
+               v-model="appliedFilters.favorite"
+               v-on:change="applyCurrentFilter" />
+        <label for="controlsFilterFavorite" class="controls_label">Favorite</label>
+      </div>
+    </transition>
   </div>
 </template>
 
@@ -29,7 +46,9 @@ export default {
     ...mapState([
       'isAddNoteShown',
       'isListView',
-      'isAllNotesMarked'
+      'isAllNotesMarked',
+      'isFilterShown',
+      'appliedFilters'
     ])
   },
   methods: {
@@ -38,6 +57,12 @@ export default {
     },
     toggleView () {
       this.$store.commit('toggleListView');
+    },
+    toggleFilter () {
+      this.$store.commit('toggleFilter');
+    },
+    applyCurrentFilter () {
+      this.$store.commit('applyFilters');
     },
     clearNotesInStorage () {
       this.$store.commit('clearNotes');

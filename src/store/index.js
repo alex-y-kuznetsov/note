@@ -8,7 +8,13 @@ export default new Vuex.Store({
     isAddNoteShown: false,
     isListView: false,
     isAllNotesMarked: false,
-    notes: []
+    isFilterShown: false,
+    appliedFilters: {
+      marked: false,
+      favorite: false
+    },
+    notes: [],
+    filteredNotes: []
   },
   mutations: {
     toggleNewNote (state) {
@@ -16,6 +22,18 @@ export default new Vuex.Store({
     },
     toggleListView (state) {
       state.isListView = !state.isListView;
+    },
+    toggleFilter (state) {
+      state.isFilterShown = !state.isFilterShown;
+    },
+    applyFilters (state) {
+      state.filteredNotes = [];
+      for (const field in state.appliedFilters) {
+        if (state.appliedFilters[field] === true) {
+          const arrToConcat = state.notes.filter(item => item[field] === true);
+          state.filteredNotes = state.filteredNotes.concat(arrToConcat);
+        }
+      }
     },
     toggleMarkAllNotes (state) {
       if (state.notes.some(item => item.marked === false)) {

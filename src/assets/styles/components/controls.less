@@ -13,3 +13,37 @@
     margin: 4px 0;
   }
 }
+
+.controls_input {
+  display: none;
+
+  &:checked {
+    & + .controls_label {
+      &::before {
+        background-color: @active_color;
+        border-color: @main_color;
+      }
+    }
+  }
+}
+
+.controls_label {
+  font-size: 12px;
+  line-height: 14px;
+  display: block;
+  position: relative;
+  padding-left: 16px;
+  margin-top: 6px;
+  cursor: pointer;
+
+  &::before {
+    display: block;
+    content: '';
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    border: 1px solid @main_color;
+    left: 0;
+    top: 0;
+  }
+}

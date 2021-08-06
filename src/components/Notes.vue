@@ -1,10 +1,14 @@
 <template>
   <div class="notes"
        v-bind:class="{ 'notes_list': isListView }">
-    <h1 class="notes_title">Notes</h1>
+    <h1 class="notes_title">
+      <span>Notes</span>
+      <span class="notes_filtered"
+            v-if="isFiltered">Filtered: Marked</span>
+    </h1>
     <div class="notes_inner">
       <NewNoteItem v-if="isAddNoteShown"/>
-      <NoteItem v-for="note in notes"
+      <NoteItem v-for="note in notesArray"
                 v-bind:id="note.id"
                 v-bind:key="note.id"
                 v-bind:title="note.title"
@@ -33,8 +37,16 @@ export default {
     ...mapState([
       'isAddNoteShown',
       'isListView',
-      'notes'
-    ])
+      'appliedFilters',
+      'notes',
+      'filteredNotes'
+    ]),
+    isFiltered () {
+      return this.appliedFilters.marked || this.appliedFilters.favorite;
+    },
+    notesArray () {
+      return this.isFiltered ? this.filteredNotes : this.notes
+    }
   },
   created () {
     this.$store.commit('updateNotes');
