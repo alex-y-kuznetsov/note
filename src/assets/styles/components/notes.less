@@ -37,7 +37,7 @@
   display: flex;
   flex-wrap: wrap;
   max-height: 100%;
-  overflow: auto;
+  overflow-y: auto;
   margin-bottom: 10px;
 }
 
@@ -176,10 +176,11 @@
 .notes_list {
   .notes_inner {
     flex-direction: column;
-    overflow: initial;
+    flex-wrap: nowrap;
   }
 
   .note {
     width: 100%;
+    margin-right: 0;
   }
 }
