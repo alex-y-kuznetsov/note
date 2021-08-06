@@ -6,13 +6,31 @@
 
 .notes_title {
   font-size: 18px;
+  line-height: 24px;
   margin: 0;
 }
 
 .notes_filtered {
   margin-left: 10px;
   font-size: 16px;
+  line-height: 18px;
   font-weight: normal;
+  margin-left: 10px;
+  padding-left: 10px;
+  border-left: 1px solid @main_color;
+}
+
+.notes_filter {
+  display: inline-block;
+  font-size: 14px;
+  line-height: 16px;
+  text-transform: capitalize;
+  padding: 2px;
+  border: 1px solid @main_color;
+
+  &:not(:first-of-type) {
+    margin-right: 6px;
+  }
 }
 
 .notes_inner {

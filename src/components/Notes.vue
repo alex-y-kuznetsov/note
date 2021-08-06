@@ -4,7 +4,12 @@
     <h1 class="notes_title">
       <span>Notes</span>
       <span class="notes_filtered"
-            v-if="isFiltered">Filtered: Marked</span>
+            v-if="isFiltered">
+            <span>Applied filters: </span>
+            <span class="notes_filter"
+                  v-for="(appliedFilter, index) in appliedFilterTypes"
+                  v-bind:key="index">{{ appliedFilter }}</span>
+            </span>
     </h1>
     <div class="notes_inner">
       <NewNoteItem v-if="isAddNoteShown"/>
@@ -46,6 +51,15 @@ export default {
     },
     notesArray () {
       return this.isFiltered ? this.filteredNotes : this.notes
+    },
+    appliedFilterTypes () {
+      const trueItems = [];
+      for (const item in this.appliedFilters) {
+        if (this.appliedFilters[item] === true) {
+          trueItems.push(item)
+        }
+      }
+      return trueItems;
     }
   },
   created () {
