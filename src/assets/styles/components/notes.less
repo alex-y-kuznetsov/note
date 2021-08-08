@@ -174,13 +174,24 @@
 }
 
 .notes_list {
-  .notes_inner {
-    flex-direction: column;
-    flex-wrap: nowrap;
+  .notes_list_view();
+}
+
+@media (max-width: @mobile_width) {
+  .list_switch {
+      display: none;
+    }
+
+  .notes {
+    .notes_list_view();
+
+    .note {
+    width: 97%;
+    margin-top: 6%;
+    }
   }
 
-  .note {
-    width: 99%;
-    margin-right: 0;
+  .notes_inner {
+    margin-bottom: 16px;
   }
 }

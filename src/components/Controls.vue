@@ -13,7 +13,7 @@
             v-on:click.stop="toggleMarkAllNotes">
       {{ isAllNotesMarked ? 'Unmark All' : 'Mark All' }}
     </button>
-    <button class="btn"
+    <button class="btn list_switch"
             v-on:click.stop="toggleView">
       {{ isListView ? 'Tiles View' : 'List View' }}
     </button>
