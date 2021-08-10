@@ -18,7 +18,7 @@
       {{ isListView ? 'Tiles View' : 'List View' }}
     </button>
     <button class="btn"
-            v-bind:class="{ 'btn_active': isFilterShown}"
+            v-bind:class="{ 'btn_active': isFilterShown }"
             v-on:click.stop="toggleMode('isFilterShown')">
       Show Filters
     </button>
