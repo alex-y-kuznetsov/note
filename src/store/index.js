@@ -18,14 +18,8 @@ export default new Vuex.Store({
     filteredNotes: []
   },
   mutations: {
-    toggleNewNote (state) {
-      state.isAddNoteShown = !state.isAddNoteShown;
-    },
-    toggleListView (state) {
-      state.isListView = !state.isListView;
-    },
-    toggleFilter (state) {
-      state.isFilterShown = !state.isFilterShown;
+    toggleMode (state, mode) {
+      state[mode] = !state[mode];
     },
     applyFilters (state) {
       state.filteredNotes = [];

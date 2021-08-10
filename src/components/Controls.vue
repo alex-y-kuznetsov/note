@@ -2,7 +2,7 @@
   <div class="controls">
     <button class="btn"
             v-bind:class="{ 'btn_active': isAddNoteShown }"
-            v-on:click.stop="toggleAddNote">
+            v-on:click.stop="toggleMode('isAddNoteShown')">
       Add Note
     </button>
     <button class="btn"
@@ -14,12 +14,12 @@
       {{ isAllNotesMarked ? 'Unmark All' : 'Mark All' }}
     </button>
     <button class="btn list_switch"
-            v-on:click.stop="toggleView">
+            v-on:click.stop="toggleMode('isListView')">
       {{ isListView ? 'Tiles View' : 'List View' }}
     </button>
     <button class="btn"
             v-bind:class="{ 'btn_active': isFilterShown}"
-            v-on:click.stop="toggleFilter">
+            v-on:click.stop="toggleMode('isFilterShown')">
       Show Filters
     </button>
     <transition name="slide-fade">
@@ -52,14 +52,8 @@ export default {
     ])
   },
   methods: {
-    toggleAddNote () {
-      this.$store.commit('toggleNewNote');
-    },
-    toggleView () {
-      this.$store.commit('toggleListView');
-    },
-    toggleFilter () {
-      this.$store.commit('toggleFilter');
+    toggleMode (mode) {
+      this.$store.commit('toggleMode', mode);
     },
     applyCurrentFilter () {
       this.$store.commit('applyFilters');
